@@ -17,4 +17,11 @@ Vagrant.configure("2") do |config|
     c.vm.provision "file", source: "./scripts", destination: "/home/vagrant/scripts"
     c.vm.provision "file", source: "./manifests", destination: "/home/vagrant/manifests"
   end
+
+  config.vm.define 'worker-2' do |c|
+    c.vm.hostname = 'worker-2'
+    c.vm.network "private_network", ip: "192.168.254.12"
+    c.vm.provision "file", source: "./scripts", destination: "/home/vagrant/scripts"
+    c.vm.provision "file", source: "./manifests", destination: "/home/vagrant/manifests"
+  end
 end
